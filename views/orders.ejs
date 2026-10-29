@@ -1,0 +1,20 @@
+<%- include('partials/nav') %>
+<link rel="stylesheet" href="/style.css">
+<main class="container">
+  <h1>My Orders</h1>
+  <% if (orders.length === 0) { %>
+    <p>No orders yet.</p>
+  <% } else { %>
+    <% orders.forEach(o => { %>
+      <div class="order-card">
+        <h3>Order #<%= o.id %> — ₹<%= o.total %> — <%= o.status %></h3>
+        <p>Placed: <%= o.created_at %></p>
+        <ul>
+          <% o.items.forEach(it => { %>
+            <li><%= it.name %> × <%= it.quantity %> @ ₹<%= it.price %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% }) %>
+  <% } %>
+</main>

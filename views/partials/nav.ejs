@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="brand">🛍️ CodeAlpha Store</a>
+    <div class="nav-links">
+      <a href="/">Shop</a>
+      <a href="/cart">Cart (<%= cartCount %>)</a>
+      <% if (user) { %>
+        <a href="/orders">My Orders</a>
+        <span>Hi, <%= user.username %></span>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      <% } %>
+    </div>
+  </div>
+</nav>
