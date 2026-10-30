@@ -50,8 +50,8 @@ db.exec(`
 `);
 
 // Seed products if empty
-const count = db.prepare('SELECT COUNT(*) as c FROM products').get().c;
-if (count === 0) {
+  db.prepare('DELETE FROM products').run();
+ {
   const seed = db.prepare('INSERT INTO products (name, description, price, image, stock) VALUES (?, ?, ?, ?, ?)');
   const items = [
     ['Wireless Headphones', 'Noise-cancelling over-ear headphones with 30hr battery.', 2999, 'https://via.placeholder.com/300?text=Headphones', 15],
