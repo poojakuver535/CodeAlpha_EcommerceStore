@@ -49,17 +49,17 @@ db.exec(`
   );
 `);
 
-// Seed products if empty
-  db.prepare('DELETE FROM products').run();
- {
+// Always clear and reseed products with real working images
+db.prepare('DELETE FROM products').run();
+{
   const seed = db.prepare('INSERT INTO products (name, description, price, image, stock) VALUES (?, ?, ?, ?, ?)');
   const items = [
-    ['Wireless Headphones', 'Noise-cancelling over-ear headphones with 30hr battery.', 2999, 'https://via.placeholder.com/300?text=Headphones', 15],
-    ['Smart Watch', 'Fitness tracker with heart-rate monitor and GPS.', 4999, 'https://via.placeholder.com/300?text=Smart+Watch', 20],
-    ['Laptop Backpack', 'Water-resistant backpack with USB charging port.', 1499, 'https://via.placeholder.com/300?text=Backpack', 30],
-    ['Bluetooth Speaker', 'Portable waterproof speaker with deep bass.', 1999, 'https://via.placeholder.com/300?text=Speaker', 25],
-    ['Mechanical Keyboard', 'RGB backlit mechanical keyboard, blue switches.', 3499, 'https://via.placeholder.com/300?text=Keyboard', 12],
-    ['Wireless Mouse', 'Ergonomic wireless mouse with silent clicks.', 899, 'https://via.placeholder.com/300?text=Mouse', 50]
+    ['Wireless Headphones', 'Noise-cancelling over-ear headphones with 30hr battery.', 2999, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80', 15],
+    ['Smart Watch', 'Fitness tracker with heart-rate monitor and GPS.', 4999, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80', 20],
+    ['Laptop Backpack', 'Water-resistant backpack with USB charging port.', 1499, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80', 30],
+    ['Bluetooth Speaker', 'Portable waterproof speaker with deep bass.', 1999, 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80', 25],
+    ['Mechanical Keyboard', 'RGB backlit mechanical keyboard, blue switches.', 3499, 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80', 12],
+    ['Wireless Mouse', 'Ergonomic wireless mouse with silent clicks.', 899, 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=80', 50]
   ];
   items.forEach(p => seed.run(...p));
 }
